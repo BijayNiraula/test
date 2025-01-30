@@ -1,6 +1,12 @@
+const port = process.env.PORT || 3005;
+const server = require("http").createServer();
 const WebSocket = require("ws");
 
-const wss = new WebSocket.Server({ port: 3005 });
+const wss = new WebSocket.Server({ server });
+
+server.listen(port, () => {
+  console.log(`WebSocket server running on port ${port}`);
+});
 
 const clients = new Map();
 const serviceProviders = new Map();
